@@ -2,7 +2,7 @@
 
 A comprehensive Node.js + Express + MongoDB backend for the Nosej e-commerce platform, featuring full authentication, product management, shopping cart, wishlist, and order tracking.
 
-🔗 **Interactive API Documentation**: http://localhost:5000/api-docs (Swagger UI)
+🔗 **Interactive API Documentation**: http://localhost:3000/api-docs (Swagger UI)
 
 ---
 
