@@ -2,11 +2,11 @@
 
 A comprehensive Node.js + Express + MongoDB backend for the Nosej e-commerce platform, featuring full authentication, product management, shopping cart, wishlist, and order tracking.
 
-🔗 **Interactive API Documentation**: http://localhost:5000/api-docs (Swagger UI)
+🔗 **Interactive API Documentation**: http://localhost:3000/api-docs (Swagger UI)
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js 16+ installed
@@ -26,11 +26,11 @@ cp config/.env.example config/.env
 npm run dev
 ```
 
-Server will run on `http://localhost:5000` (configurable via `PORT` in `.env`)
+Server will run on `http://localhost:3000` (configurable via `PORT` in `.env`)
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 backend/
@@ -67,7 +67,7 @@ backend/
 
 ---
 
-## 🔧 Environment Setup
+##  Environment Setup
 
 Create `config/.env` with the following variables:
 
@@ -78,19 +78,19 @@ DATABASE_PASSWORD=your_password
 JWT_SECRET=your_secret_key_here (use: openssl rand -hex 32)
 
 # Server
-PORT=5000
+PORT=3000
 NODE_ENV=development
 ```
 
 ---
 
-## 📚 API Endpoints Overview
+##  API Endpoints Overview
 
-**Base URL**: `http://localhost:5000/api`
+**Base URL**: `http://localhost:3000/api`
 
 All endpoints are fully documented in **Swagger UI** at `/api-docs` with request/response examples and interactive testing.
 
-### 🔐 Authentication
+###  Authentication
 
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
@@ -98,11 +98,11 @@ All endpoints are fully documented in **Swagger UI** at `/api-docs` with request
 | `POST` | `/auth/login` | Login user | ❌ |
 | `POST` | `/auth/logout` | Logout user | ❌ |
 
-📖 [View in Swagger](http://localhost:5000/api-docs)
+ [View in Swagger](http://localhost:3000/api-docs)
 
 ---
 
-### 🛍️ Products
+###  Products
 
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
@@ -115,11 +115,11 @@ All endpoints are fully documented in **Swagger UI** at `/api-docs` with request
 
 **Query Parameters**: `?category=nosej&search=shirt&sort=price-asc`
 
-📖 [View in Swagger](http://localhost:5000/api-docs)
+📖 [View in Swagger](http://localhost:3000/api-docs)
 
 ---
 
-### 🛒 Cart (Requires Auth)
+###  Cart (Requires Auth)
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -129,11 +129,11 @@ All endpoints are fully documented in **Swagger UI** at `/api-docs` with request
 | `DELETE` | `/cart` | Clear entire cart |
 | `DELETE` | `/cart/:productId` | Remove item from cart |
 
-📖 [View in Swagger](http://localhost:5000/api-docs)
+ [View in Swagger](http://localhost:3000/api-docs)
 
 ---
 
-### ❤️ Wishlist (Requires Auth)
+###  Wishlist (Requires Auth)
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -141,11 +141,11 @@ All endpoints are fully documented in **Swagger UI** at `/api-docs` with request
 | `POST` | `/wishlist` | Add product to wishlist |
 | `DELETE` | `/wishlist/:productId` | Remove from wishlist |
 
-📖 [View in Swagger](http://localhost:5000/api-docs)
+ [View in Swagger](http://localhost:3000/api-docs)
 
 ---
 
-### 📦 Orders (Requires Auth)
+###  Orders (Requires Auth)
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -157,11 +157,11 @@ All endpoints are fully documented in **Swagger UI** at `/api-docs` with request
 
 **Status Flow**: `pending` → `confirmed` → `shipped` → `delivered`
 
-📖 [View in Swagger](http://localhost:5000/api-docs)
+ [View in Swagger](http://localhost:3000/api-docs)
 
 ---
 
-### 👤 Users (Requires Auth)
+###  Users (Requires Auth)
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -170,11 +170,11 @@ All endpoints are fully documented in **Swagger UI** at `/api-docs` with request
 | `POST` | `/users/change-password` | Change password |
 | `DELETE` | `/users/account` | Delete account |
 
-📖 [View in Swagger](http://localhost:5000/api-docs)
+ [View in Swagger](http://localhost:3000/api-docs)
 
 ---
 
-## 🔑 Authentication
+##  Authentication
 
 The API uses **JWT (JSON Web Tokens)** for authentication.
 
@@ -194,18 +194,18 @@ The API uses **JWT (JSON Web Tokens)** for authentication.
 ### Example Usage
 ```bash
 # Login and get token
-curl -X POST http://localhost:5000/api/auth/login \
+curl -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"ahmed@example.com","password":"password123"}'
 
 # Use token to access protected endpoint
-curl -X GET http://localhost:5000/api/users/profile \
+curl -X GET http://localhost:3000/api/users/profile \
   -H "Authorization: Bearer <token>"
 ```
 
 ---
 
-## 📊 Data Models
+##  Data Models
 
 ### User
 User account with profile, preferences, and address information. Passwords are hashed with bcryptjs.
@@ -242,7 +242,7 @@ Order history with shipping and status tracking.
 
 ---
 
-## 🛡️ Error Handling
+##  Error Handling
 
 All endpoints return standardized error responses:
 
@@ -264,7 +264,7 @@ All endpoints return standardized error responses:
 
 ---
 
-## 💻 Technology Stack
+##  Technology Stack
 
 | Technology | Purpose |
 |------------|---------|
@@ -280,7 +280,7 @@ All endpoints return standardized error responses:
 
 ---
 
-## 📝 Available Scripts
+##  Available Scripts
 
 ```bash
 # Start development server (with file watching)
@@ -295,12 +295,12 @@ npm start
 
 ---
 
-## 📖 Full API Documentation
+##  Full API Documentation
 
 **Visit Swagger UI for complete, interactive API documentation:**
 
 ```
-http://localhost:5000/api-docs
+http://localhost:3000/api-docs
 ```
 
 The Swagger interface provides:
@@ -312,10 +312,10 @@ The Swagger interface provides:
 
 ---
 
-## 🧪 Quick Testing
+##  Quick Testing
 
 ### Using Swagger UI (Recommended)
-1. Open http://localhost:5000/api-docs
+1. Open http://localhost:3000/api-docs
 2. Click any endpoint to expand it
 3. Click **"Try it out"** button
 4. Fill in parameters
@@ -326,7 +326,7 @@ See full examples in [Swagger UI](#full-api-documentation)
 
 ---
 
-## 🐛 Debugging
+##  Debugging
 
 ### Enable Logging
 Check terminal output while running:
@@ -348,22 +348,22 @@ npm run dev
 
 ---
 
-## 👤 Developer
+##  Developer
 
-**Ahmed Salah** — Full-Stack Developer & GIS Analyst  
-📧 nadasaleh5560@gmail.com  
-🐙 [github.com/Ahmed-salah-muhammed](https://github.com/Ahmed-salah-muhammed/)
+**Ahmed Salah** — Full-Stack Developer & GIS Developer  
+ ahmedsalah219013@gmail.com  
+ [github.com/Ahmed-salah-muhammed](https://github.com/Ahmed-salah-muhammed/)
 
 ---
 
-## 📄 License
+##  License
 
 ISC License
 
 ---
 
-## 🔗 Related
+##  Related
 
 - **Frontend**: [Nosej Frontend](../frontend/README.md)
-- **API Docs**: http://localhost:5000/api-docs
+- **API Docs**: http://localhost:3000/api-docs
 - **Live Demo**: https://nosej.netlify.app/
