@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Nosej Shop API
-  description: E-commerce API for the Nosej gallery shop
+  title: A R T. Gallery API
+  description: E-commerce API for the A R T. Gallery shop
   version: 1.0.0
   contact:
     name: API Support
@@ -99,10 +99,10 @@ components:
           type: string
         title:
           type: string
-          example: "Nosej Classic White Tee"
+          example: "A R T. Gallery Classic White Tee"
         description:
           type: string
-          example: "Signature Nosej heavyweight cotton tee"
+          example: "Signature A R T. Gallery heavyweight cotton tee"
         price:
           type: number
           format: float
@@ -120,10 +120,10 @@ components:
           example: 120
         brand:
           type: string
-          example: "Nosej"
+          example: "A R T. Gallery"
         category:
           type: string
-          example: "nosej"
+          example: "art"
         thumbnail:
           type: string
           format: uri
@@ -511,7 +511,7 @@ paths:
                     type: array
                     items:
                       type: string
-                      example: "nosej"
+                      example: "art"
 
   /products/{id}:
     get:

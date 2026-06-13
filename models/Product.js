@@ -13,7 +13,13 @@ const productSchema = new mongoose.Schema(
     thumbnail: String,
     images: [String],
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    // Expose `id` (hex string of _id) in JSON so the frontend — originally
+    // built around DummyJSON's numeric `id` — keeps working unchanged.
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 export default mongoose.model("Product", productSchema);

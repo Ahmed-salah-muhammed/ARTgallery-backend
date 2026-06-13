@@ -38,21 +38,61 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
+    // How the account was created. OAuth users have no local password.
+    authProvider: {
+      type: String,
+      enum: ["local", "google", "facebook"],
+      default: "local",
+    },
+    googleId: {
+      type: String,
+      index: { unique: true, sparse: true },
+    },
+    facebookId: {
+      type: String,
+      index: { unique: true, sparse: true },
+    },
     password: {
       type: String,
-      required: [true, "Password is required"],
+      // Only local accounts must supply a password.
+      required: [
+        function () {
+          return this.authProvider === "local";
+        },
+        "Password is required",
+      ],
       minlength: [8, "Password must be at least 8 characters"],
       select: false,
     },
     passwordConfirm: {
       type: String,
-      required: [true, "Please confirm your password"],
+      required: [
+        function () {
+          return this.authProvider === "local";
+        },
+        "Please confirm your password",
+      ],
       validate: {
         validator: function (el) {
+          // Skip when there is no password to confirm (OAuth accounts).
+          if (!this.password) return true;
           return el === this.password;
         },
         message: "Passwords do not match",
       },
+      select: false,
+    },
+    // Email verification
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    emailVerificationToken: {
+      type: String,
+      select: false,
+    },
+    emailVerificationExpires: {
+      type: Date,
       select: false,
     },
     passwordChangedAt: Date,
@@ -147,6 +187,19 @@ userSchema.methods.createPasswordResetToken = function () {
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
 
   return resetToken;
+};
+
+userSchema.methods.createEmailVerificationToken = function () {
+  const verifyToken = crypto.randomBytes(32).toString("hex");
+
+  this.emailVerificationToken = crypto
+    .createHash("sha256")
+    .update(verifyToken)
+    .digest("hex");
+
+  this.emailVerificationExpires = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
+
+  return verifyToken;
 };
 
 // Virtual for full name
