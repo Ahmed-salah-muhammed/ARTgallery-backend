@@ -68,17 +68,16 @@ export const register = async (req, res, next) => {
       phone,
       password,
       passwordConfirm,
+      isVerified: true,
     });
 
-    // Strict verification: no session token until the email is confirmed.
-    await issueVerification(user);
+    // Simple signup: no email verification — log the user in immediately.
+    const token = generateToken(user._id);
 
     res.status(201).json({
       success: true,
-      needsVerification: true,
-      email: user.email,
-      message:
-        "Account created. Check your inbox for a verification link to activate your account.",
+      token,
+      user: publicUser(user),
     });
   } catch (err) {
     if (err.code === 11000) {
